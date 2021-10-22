@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start:node-grpc": "lerna exec --scope @jarvis/node-grpc -- yarn start"
+    "start:node-grpc:server": "lerna exec --scope @jarvis/node-grpc -- yarn start",
+    "start:node-grpc:client": "lerna exec --scope @jarvis/node-grpc -- yarn client"
   },
   "keywords": [],
   "author": "",

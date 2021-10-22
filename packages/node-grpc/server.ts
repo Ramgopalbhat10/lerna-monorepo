@@ -35,6 +35,7 @@ function getServer() {
   server.addService(randomPackage.Random.service, {
     PingPong: (req, res) => {
       console.log(req, res);
+      res(null, { message: "Pong" });
     },
   } as RandomHandlers);
   return server;
