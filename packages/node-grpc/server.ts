@@ -37,6 +37,20 @@ function getServer() {
       console.log(req, res);
       res(null, { message: "Pong" });
     },
+    RandomNUmbers: (call) => {
+      const { maxValue = 10 } = call.request;
+      console.log({ maxValue });
+
+      let runcount = 0;
+      const id = setInterval(() => {
+        runcount += 1;
+        call.write({ num: Math.floor(Math.random() * maxValue) });
+        if (runcount >= 10) {
+          clearInterval(id);
+          call.end();
+        }
+      }, 500);
+    },
   } as RandomHandlers);
   return server;
 }

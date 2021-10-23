@@ -29,11 +29,19 @@ client.waitForReady(deadline, (err) => {
 });
 
 function onClientReady() {
-  client.PingPong({ message: "Ping" }, (err, result) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(result);
+  // client.PingPong({ message: "Ping" }, (err, result) => {
+  //   if (err) {
+  //     console.error(err);
+  //     return;
+  //   }
+  //   console.log(result);
+  // });
+
+  const stream = client.RandomNUmbers({ maxValue: 85 });
+  stream.on("data", (chunk) => {
+    console.log(chunk);
+  });
+  stream.on("end", () => {
+    console.log("Communication ended...");
   });
 }
